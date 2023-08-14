@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import de.voomdoon.testing.tests.TestBase;
@@ -29,7 +30,8 @@ public class PropertiesUtilTest {
 	 *
 	 * @since 0.1.0
 	 */
-	static class LoadProperties_StringArray_Test extends TestBase {
+	@Nested
+	class LoadProperties_StringArray_Test extends TestBase {
 
 		/**
 		 * @since 0.1.0
