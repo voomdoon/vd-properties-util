@@ -34,12 +34,6 @@
 			<version>0.1.0-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>de.voomdoon.util</groupId>
-			<artifactId>vd-debug-util</artifactId>
-			<version>[0.1.0-SNAPSHOT],[0.1.0,0.1.99]</version>
-			<scope>test</scope>
-		</dependency>
 		<!-- - - - - - internal voomdoon test dependencies - - - - - -->
 
 		<!-- + + + + + external test dependencies + + + + + -->
