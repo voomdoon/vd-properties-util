@@ -32,6 +32,8 @@ public class PropertiesUtil {
 	 * @since 0.1.0
 	 */
 	public static Properties loadProperties(String... sources) {
+		// FEATURE support references to other properties
+		// FEATURE support parent properties
 		Properties result = new Properties();
 
 		for (String source : sources) {
