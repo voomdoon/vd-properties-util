@@ -107,5 +107,18 @@ public class PropertiesUtilTest {
 
 			assertThat(properties).containsEntry("string", "äöüß");
 		}
+
+		/**
+		 * @since 0.1.0
+		 */
+		@Test
+		void test_withLeadingSlash() {
+			logTestStart();
+
+			Properties properties = PropertiesUtil
+					.loadProperties("/PropertiesUtil/stringQuotedStartWithSpace.properties");
+
+			assertThat(properties.get("string")).isEqualTo(" abc");
+		}
 	}
 }
