@@ -24,7 +24,7 @@ import de.voomdoon.util.io.IOStreamUtil;
 public class PropertiesUtilTest {
 
 	/**
-	 * Test class for {@link PropertiesUtil#loadProperties(String...)}.
+	 * Tests for {@link PropertiesUtil#loadProperties(String...)}.
 	 *
 	 * @author André Schulz
 	 *
