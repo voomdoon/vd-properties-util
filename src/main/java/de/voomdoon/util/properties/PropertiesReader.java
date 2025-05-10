@@ -158,7 +158,7 @@ public class PropertiesReader {
 	 * @return
 	 * @since 0.1.0
 	 */
-	public Properties loadProperties(String... sources) {
+	public Properties read(String... sources) {
 		Properties result = new Properties();
 
 		for (String source : sources) {

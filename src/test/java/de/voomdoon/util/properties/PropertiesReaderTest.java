@@ -24,14 +24,14 @@ import de.voomdoon.util.io.IOStreamUtil;
 public class PropertiesReaderTest {
 
 	/**
-	 * Tests for {@link PropertiesReader#loadProperties(String...)}.
+	 * Tests for {@link PropertiesReader#read(String...)}.
 	 *
 	 * @author André Schulz
 	 *
 	 * @since 0.1.0
 	 */
 	@Nested
-	class LoadProperties_StringArray_Test extends TestBase {
+	class Read_StringArray_Test extends TestBase {
 
 		/**
 		 * @since 0.1.0
@@ -41,7 +41,7 @@ public class PropertiesReaderTest {
 			logTestStart();
 
 			Properties properties = PropertiesReader.DEFAULT
-					.loadProperties("PropertiesUtil/stringQuotedStartWithSpace.properties");
+					.read("PropertiesUtil/stringQuotedStartWithSpace.properties");
 
 			assertThat(properties.get("string")).isEqualTo(" abc");
 		}
@@ -60,7 +60,7 @@ public class PropertiesReaderTest {
 			IOStreamUtil.copy(IOStreamUtil.getInputStream("PropertiesUtil/umlauts.properties"),
 					new FileOutputStream(file));
 
-			Properties properties = PropertiesReader.DEFAULT.loadProperties(file.toString());
+			Properties properties = PropertiesReader.DEFAULT.read(file.toString());
 
 			assertThat(properties).containsEntry("string", "äöüß");
 		}
@@ -79,7 +79,7 @@ public class PropertiesReaderTest {
 			IOStreamUtil.copy(IOStreamUtil.getInputStream("PropertiesUtil/umlauts_UTF8.properties"),
 					new FileOutputStream(file));
 
-			Properties properties = PropertiesReader.DEFAULT.loadProperties(file.toString());
+			Properties properties = PropertiesReader.DEFAULT.read(file.toString());
 
 			assertThat(properties).containsEntry("string", "äöüß");
 		}
@@ -91,7 +91,7 @@ public class PropertiesReaderTest {
 		void test_umlauts_resource() {
 			logTestStart();
 
-			Properties properties = PropertiesReader.DEFAULT.loadProperties("PropertiesUtil/umlauts.properties");
+			Properties properties = PropertiesReader.DEFAULT.read("PropertiesUtil/umlauts.properties");
 
 			assertThat(properties).containsEntry("string", "äöüß");
 		}
@@ -103,7 +103,7 @@ public class PropertiesReaderTest {
 		void test_umlauts_resource_UTF8() {
 			logTestStart();
 
-			Properties properties = PropertiesReader.DEFAULT.loadProperties("PropertiesUtil/umlauts_UTF8.properties");
+			Properties properties = PropertiesReader.DEFAULT.read("PropertiesUtil/umlauts_UTF8.properties");
 
 			assertThat(properties).containsEntry("string", "äöüß");
 		}
@@ -116,7 +116,7 @@ public class PropertiesReaderTest {
 			logTestStart();
 
 			Properties properties = PropertiesReader.DEFAULT
-					.loadProperties("/PropertiesUtil/stringQuotedStartWithSpace.properties");
+					.read("/PropertiesUtil/stringQuotedStartWithSpace.properties");
 
 			assertThat(properties.get("string")).isEqualTo(" abc");
 		}
