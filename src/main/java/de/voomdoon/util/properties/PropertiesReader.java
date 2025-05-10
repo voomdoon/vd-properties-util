@@ -12,7 +12,9 @@ import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Properties;
 
-import lombok.experimental.UtilityClass;
+// FEATURE support references to other properties
+
+// FEATURE support parent properties
 
 /**
  * DOCME add JavaDoc for
@@ -21,28 +23,14 @@ import lombok.experimental.UtilityClass;
  *
  * @since 0.1.0
  */
-@UtilityClass
-public class PropertiesUtil {
+public class PropertiesReader {
 
 	/**
-	 * DOCME add JavaDoc for method loadProperties
+	 * Default {@link PropertiesReader}.
 	 * 
-	 * @param sources
-	 * @return
 	 * @since 0.1.0
 	 */
-	public static Properties loadProperties(String... sources) {
-		// FEATURE support references to other properties
-		// FEATURE support parent properties
-		Properties result = new Properties();
-
-		for (String source : sources) {
-			Properties properties = loadProperties(source, PropertiesUtil.class);
-			putAll(result, properties);
-		}
-
-		return result;
-	}
+	public static final PropertiesReader DEFAULT = new PropertiesReader();
 
 	/**
 	 * DOCME add JavaDoc for method loadProperties
@@ -152,6 +140,33 @@ public class PropertiesUtil {
 
 			result.put(entry.getKey(), value);
 		}
+	}
+
+	/**
+	 * DOCME add JavaDoc for constructor PropertiesReader
+	 * 
+	 * @since 0.1.0
+	 */
+	private PropertiesReader() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * DOCME add JavaDoc for method loadProperties
+	 * 
+	 * @param sources
+	 * @return
+	 * @since 0.1.0
+	 */
+	public Properties loadProperties(String... sources) {
+		Properties result = new Properties();
+
+		for (String source : sources) {
+			Properties properties = loadProperties(source, PropertiesReader.class);
+			putAll(result, properties);
+		}
+
+		return result;
 	}
 
 }
