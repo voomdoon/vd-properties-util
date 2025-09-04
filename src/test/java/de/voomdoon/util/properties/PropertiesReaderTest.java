@@ -2,7 +2,6 @@ package de.voomdoon.util.properties;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,7 +9,10 @@ import java.util.Properties;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
+import de.voomdoon.testing.file.TempFileExtension;
+import de.voomdoon.testing.file.TempInputFile;
 import de.voomdoon.testing.tests.TestBase;
 import de.voomdoon.util.io.IOStreamUtil;
 
@@ -21,6 +23,7 @@ import de.voomdoon.util.io.IOStreamUtil;
  *
  * @since 0.1.0
  */
+@ExtendWith(TempFileExtension.class)
 public class PropertiesReaderTest {
 
 	/**
@@ -52,15 +55,13 @@ public class PropertiesReaderTest {
 		 * @since 0.1.0
 		 */
 		@Test
-		void test_umlauts_file() throws FileNotFoundException, IOException {
+		void test_umlauts_file(@TempInputFile String sourceFile) throws FileNotFoundException, IOException {
 			logTestStart();
 
-			File file = new File(getTempDirectory() + "/umlauts.properties");
-
 			IOStreamUtil.copy(IOStreamUtil.getInputStream("PropertiesUtil/umlauts.properties"),
-					new FileOutputStream(file));
+					new FileOutputStream(sourceFile));
 
-			Properties properties = PropertiesReader.DEFAULT.read(file.toString());
+			Properties properties = PropertiesReader.DEFAULT.read(sourceFile);
 
 			assertThat(properties).containsEntry("string", "äöüß");
 		}
@@ -71,15 +72,13 @@ public class PropertiesReaderTest {
 		 * @since 0.1.0
 		 */
 		@Test
-		void test_umlauts_file_UTF8() throws FileNotFoundException, IOException {
+		void test_umlauts_file_UTF8(@TempInputFile String sourceFile) throws FileNotFoundException, IOException {
 			logTestStart();
 
-			File file = new File(getTempDirectory() + "/umlauts_UTF8.properties");
-
 			IOStreamUtil.copy(IOStreamUtil.getInputStream("PropertiesUtil/umlauts_UTF8.properties"),
-					new FileOutputStream(file));
+					new FileOutputStream(sourceFile));
 
-			Properties properties = PropertiesReader.DEFAULT.read(file.toString());
+			Properties properties = PropertiesReader.DEFAULT.read(sourceFile);
 
 			assertThat(properties).containsEntry("string", "äöüß");
 		}
