@@ -58,7 +58,7 @@ public class PropertiesReaderTest {
 		void test_umlauts_file(@TempInputFile String sourceFile) throws FileNotFoundException, IOException {
 			logTestStart();
 
-			IOStreamUtil.copy(IOStreamUtil.getInputStream("PropertiesUtil/umlauts.properties"),
+			IOStreamUtil.copyAndClose(IOStreamUtil.getInputStream("PropertiesUtil/umlauts.properties"),
 					new FileOutputStream(sourceFile));
 
 			Properties properties = PropertiesReader.DEFAULT.read(sourceFile);
@@ -75,7 +75,7 @@ public class PropertiesReaderTest {
 		void test_umlauts_file_UTF8(@TempInputFile String sourceFile) throws FileNotFoundException, IOException {
 			logTestStart();
 
-			IOStreamUtil.copy(IOStreamUtil.getInputStream("PropertiesUtil/umlauts_UTF8.properties"),
+			IOStreamUtil.copyAndClose(IOStreamUtil.getInputStream("PropertiesUtil/umlauts_UTF8.properties"),
 					new FileOutputStream(sourceFile));
 
 			Properties properties = PropertiesReader.DEFAULT.read(sourceFile);
