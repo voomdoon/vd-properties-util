@@ -33,7 +33,7 @@ public class PropertiesReader {
 	public static final PropertiesReader DEFAULT = new PropertiesReader();
 
 	/**
-	 * DOCME add JavaDoc for method loadProperties
+	 * Loads {@link Properties} from an {@link InputStream}.
 	 * 
 	 * @param inputStream
 	 * @return
@@ -155,7 +155,8 @@ public class PropertiesReader {
 	 * DOCME add JavaDoc for method loadProperties
 	 * 
 	 * @param sources
-	 * @return
+	 *            resource or file names as {@link String}s
+	 * @return merged properties
 	 * @since 0.1.0
 	 */
 	public Properties read(String... sources) {
